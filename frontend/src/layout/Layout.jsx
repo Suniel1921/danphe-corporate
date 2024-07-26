@@ -29,11 +29,13 @@ import Navbar from '../pages/navbar/Navbar';
 import Footer from '../pages/footer/Footer';
 import { Outlet } from 'react-router-dom';
 import '../layout/layout.css';
+import Banner from '../components/topBanner/Banner';
 
 const Layout = () => {
   return (
     <>
       <div className="layoutContainer">
+        <Banner/>
         <Navbar />
         <div className="mainContent">
           <Outlet />

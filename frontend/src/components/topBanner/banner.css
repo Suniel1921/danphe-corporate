@@ -1,0 +1,25 @@
+.banner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.bannerLink{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.icons{
+    color: var(--whiteColor);
+    font-size: 1.5rem;
+    
+}
+
+.NepalTechlogo{
+    width: 5%;
+}
+
+.bannerContainer{
+    background-color: var(--darkBlue);
+}
+
