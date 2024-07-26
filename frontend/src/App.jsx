@@ -1,11 +1,20 @@
-import React from 'react'
+import React from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Layout from './layout/Layout';
+import Home from './pages/home/Home';
 
 const App = () => {
   return (
-    <div className='container test'>
-      <h3>Hello nepaL TECH </h3>
-      <h3>danphe</h3>
-    </div>
+  <>
+  <Router>
+    <Routes>
+      <Route path='/' element={<Layout/>}>
+      <Route index element={<Home/>}/>
+      </Route>
+    </Routes>
+  </Router>
+
+  </>
   )
 }
 
