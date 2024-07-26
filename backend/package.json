@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Nepal Tech Innovation",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "suniel1921"
+  },
+  "keywords": [
+    "Nepal"
+  ],
+  "author": "Nepal Tech Innovation",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
