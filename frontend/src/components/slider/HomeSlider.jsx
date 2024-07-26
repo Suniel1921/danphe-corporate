@@ -4,9 +4,9 @@ import '../slider/homeSlider.css';
 const HomeSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    { src: '/img/slide1.png', heading: 'iam slide heading', content: 'Content for Slide 1' },
-    { src: '/img/slide2.png', heading: 'iam slide heading', content: 'Content for Slide 2' },
-    { src: '/img/slide3.png', heading: 'iam slide heading', content: 'Content for Slide 3' }
+    { src: '/img/slide1.png', heading: 'Innovative Solutions for Financial Growth', content: 'Unlock innovative financial tools that fuel startup growth with dynamic strategies and transformative solutions tailored for your success.' },
+    { src: '/img/slide2.png', heading: 'Empowering Startups with Financial Insights', content: 'Empower your startup with cutting-edge financial insights and dynamic solutions that drive rapid growth and operational excellence' },
+    { src: '/img/slide3.png', heading: 'Transformative Finance Solutions for Success', content: 'Discover financial solutions that blend innovation with dynamism, perfectly crafted to support and drive high-growth startups.' }
   ];
 
   const nextSlide = () => {
@@ -18,7 +18,7 @@ const HomeSlider = () => {
   };
 
   useEffect(() => {
-    const autoSlide = setInterval(nextSlide, 9000);
+    const autoSlide = setInterval(nextSlide, 4000);
     return () => clearInterval(autoSlide);
   }, []);
 
@@ -36,6 +36,7 @@ const HomeSlider = () => {
                <div className="leftContent">
                <h2 className='sliderHeading'>{slide.heading}</h2>
                <p className='sliderPara'>{slide.content}</p>
+               <button className='sliderBtn btn'>Get Started</button>
                </div>
               </div>
             </div>
