@@ -17,3 +17,11 @@
   --grayColor: #808080;
   --darkGrayColor: #a9a9a9;
 }
+
+.container{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  
+}
