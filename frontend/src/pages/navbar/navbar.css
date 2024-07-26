@@ -1,11 +1,18 @@
+.navbarContainer{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
 .logo{
     width: 19%;
 }
 
+
 .navbar{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center    
+      
 
 }
 

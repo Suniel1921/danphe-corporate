@@ -31,11 +31,11 @@ const HomeSlider = () => {
               key={index}
               className={`slide ${index === currentSlide ? 'active' : ''}`}
             >
-              <img src={slide.src} alt={`Slide ${index + 1}`} />
+              <img className='sliderImg' src={slide.src} alt={`Slide ${index + 1}`} />
               <div className="slideContent container">
                <div className="leftContent">
-               <h2>{slide.heading}</h2>
-               <p>{slide.content}</p>
+               <h2 className='sliderHeading'>{slide.heading}</h2>
+               <p className='sliderPara'>{slide.content}</p>
                </div>
               </div>
             </div>

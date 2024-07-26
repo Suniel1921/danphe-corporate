@@ -7,11 +7,8 @@
     position: relative;
   }
   
-  .leftContent{
-    position: relative;
-    left: 84px;
-  }
-  
+ 
+
   .sliderContainer {
     display: flex;
     transition: transform 0.5s ease-in-out;
@@ -27,9 +24,9 @@
     display: block;
   }
   
-  img {
+  .sliderImg {
     width: 100%;
-    height: auto;
+    height: 80vh;
   }
   
   .slideContent {
@@ -62,6 +59,17 @@
   
   button.next {
     right: 10px;
+  }
+
+  .leftContent{
+    position: relative;
+    left: 3.2rem;
+    bottom: 6rem;
+  }
+
+  .sliderHeading{
+    font-size: 5rem;
+
   }
 
 
