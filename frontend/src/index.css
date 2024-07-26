@@ -6,3 +6,14 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
+:root{
+  --ligthBlue: #2596be;
+  --darkBlue: #006998;
+  --mixBlue: #058dbf;
+  --cherryRed : #d2042d;
+  --blackColor: #000000;
+  --whiteColor: #ffffff;
+  --grayColor: #808080;
+  --darkGrayColor: #a9a9a9;
+}
