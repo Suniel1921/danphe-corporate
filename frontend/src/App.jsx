@@ -19,8 +19,8 @@ const App = () => {
       <Route path='/register' element={<Register/>}/>
       </Route>
     </Routes>
-    <Toaster/>
   </Router>
+    <Toaster/>
 
   </>
   )

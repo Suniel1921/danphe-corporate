@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import '../register/register.css';
+import { useAuthGlobally } from "../../../contexts/AuthContext";
 
 
 
@@ -12,6 +13,7 @@ import '../register/register.css';
 
 const Login = () => {
     const navigate = useNavigate();
+    const [auth, setAuth] = useAuthGlobally();
   
 
     // Validation schema using yup

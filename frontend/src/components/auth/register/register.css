@@ -112,6 +112,11 @@
     text-decoration: none;
 }
 
+.errors{
+    color: red;
+  
+}
+
 
 @media (max-width: 768px) {
     .register-container {
