@@ -19,7 +19,11 @@ const authSchema = new mongoose.Schema({
      isVerified:{
         type: Boolean,
         defaul: false
-     }
+     },
+     role : {
+        type : String,
+        default: 'user'
+    }
 },{timestamps: true})
 
 const userAuthModel = mongoose.model('UserAuth', authSchema);

@@ -22,9 +22,6 @@ exports.requireLogin = async (req, res, next)=>{
 }
 
 
-
-
-
 // *********************ISADMIN*******************************
 exports.isAdmin = async (req, res, next) => {
     try {

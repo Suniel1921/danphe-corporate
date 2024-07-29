@@ -1,0 +1,18 @@
+
+.admin_Grid_container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 20px;
+  }
+  
+  .charts {
+    background-color: #212529;
+    /* box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); */
+    padding: 23px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+  }
