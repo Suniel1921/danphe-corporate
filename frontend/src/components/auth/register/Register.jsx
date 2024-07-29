@@ -1,15 +1,21 @@
+
+
+//for otp
+
 import { Link } from "react-router-dom";
 import '../register/register.css';
-import React from "react";
+import React, { useState } from "react";
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom';
+import OtpVerification from "../../otp/OtpVerification";
 
 const Register = () => {
     const navigate = useNavigate();
+    const [isOTPModalOpen, setIsOTPModalOpen] = useState(false);
+    const [userEmail, setUserEmail] = useState('');
 
     //validation schema using yup
     const validationSchema = Yup.object({
@@ -31,7 +37,8 @@ const Register = () => {
                 const response = await axios.post(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/auth/register`, values);
                 if (response.data.success) {
                     toast.success(response.data.message);
-                    navigate('/login')
+                    setUserEmail(values.email);
+                    setIsOTPModalOpen(true);
                 }
             } catch (error) {
                 if (error.response) {
@@ -61,16 +68,18 @@ const Register = () => {
                         <div className="password-wrapper">
                             <input onChange={formik.handleChange} value={formik.values.password} onBlur={formik.handleBlur} type="password" name="password" placeholder="Password" />
                             {formik.touched.password && formik.errors.password && <span className="errors">{formik.errors.password}</span>}
-                            {/* <button type="button" className="show-password">SHOW</button> */}
                         </div>
                     </div>
-                    <button type="submit" className="sign-in-button">Sign up </button>
+                    <button type="submit" className="sign-in-button">Sign up</button>
                 </form>
                 <button className="sign-in-other">Sign in with Google</button>
                 <p className="sign-up-prompt">Already have an account? <Link className="link" to={'/login'}>Login Here</Link> </p>
             </div>
+            {isOTPModalOpen && <OtpVerification email={userEmail} onClose={() => setIsOTPModalOpen(false)} />}
         </div>
     );
 };
 
 export default Register;
+
+

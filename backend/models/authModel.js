@@ -12,7 +12,14 @@ const authSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    }
+    },
+    otp: { 
+        type: Number
+     },
+     isVerified:{
+        type: Boolean,
+        defaul: false
+     }
 },{timestamps: true})
 
 const userAuthModel = mongoose.model('UserAuth', authSchema);

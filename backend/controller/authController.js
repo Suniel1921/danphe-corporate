@@ -1,38 +1,76 @@
+// with otp verifcatoin
+
 const userAuthModel = require('../models/authModel');
-const bcrypt = require ('bcryptjs');
-const JWT = require ('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const JWT = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
+
+
+
+
+const tempUserStore = new Map(); // Temporary in-memory store for user data
 
 // register controller
 exports.register = async (req, res) => {
     try {
         const { name, email, password } = req.body;
 
-        // validation
+        // Validation
         if (!name || !email || !password) {
             return res.status(400).json({ success: false, message: 'All fields are required' });
         }
 
-        // check if user exists
+        // Check if user exists in the database
         const userExists = await userAuthModel.findOne({ email });
         if (userExists) {
             return res.status(400).json({ success: false, message: 'User already exists' });
         }
 
-        // hash user password
+        // Hash user password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // save new user in database
-        const newUser = await userAuthModel.create({ name, email, password: hashedPassword });
-        return res.status(201).json({ success: true, message: 'User registration successful', newUser });
-        
+        // Generate OTP
+        const otp = Math.floor(100000 + Math.random() * 900000);
+
+        // Temporarily store user data with OTP
+        tempUserStore.set(email, { name, email, password: hashedPassword, otp });
+
+        // Send OTP email
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: process.env.EMAIL,
+                pass: process.env.EMAIL_PASSWORD,
+            },
+        });
+
+        const mailOptions = {
+            from: process.env.EMAIL,
+            to: email,
+            subject: 'OTP Verification',
+            text: `Your OTP code is ${otp}. Please enter this code to verify your email address.`,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error sending email:', error);
+                return res.status(500).json({ success: false, message: 'Error sending OTP email' });
+            } else {
+                console.log('Email sent:', info.response);
+            }
+        });
+
+        return res.status(200).json({ success: true, message: 'OTP sent to email. Please verify to complete registration.' });
+
     } catch (error) {
         return res.status(500).json({ success: false, message: 'Internal server error' });
     }
 }
 
-//login controller
 
+
+// login controller
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -57,13 +95,11 @@ exports.login = async (req, res) => {
         // Generate token
         const token = JWT.sign({ _id: userExists._id }, process.env.SECRET_KEY, { expiresIn: '7d' });
         return res.status(200).json({ success: true, message: 'Login Successful', user: { name: userExists.name, email: userExists.email }, token });
-        
+
     } catch (error) {
         return res.status(500).json({ success: false, message: `Internal server error: ${error.message}` });
     }
 };
-
-
 
 // Protected route controller
 exports.protectedRoute = async (req, res) => {
@@ -72,5 +108,78 @@ exports.protectedRoute = async (req, res) => {
 
 // Admin route controller
 exports.admin = (req, res) => {
-  res.status(200).send({ ok: true });
+    res.status(200).send({ ok: true });
 }
+
+// OTP verification controller
+
+// exports.verifyOTP = async (req, res) => {
+//     try {
+//         const { email, otp } = req.body;
+
+//         // Validation
+//         if (!email || !otp) {
+//             return res.status(400).json({ success: false, message: 'Email and OTP are required' });
+//         }
+
+//         // Retrieve stored user data
+//         const userData = tempUserStore.get(email);
+//         if (!userData || userData.otp !== parseInt(otp)) {
+//             return res.status(400).json({ success: false, message: 'Invalid OTP' });
+//         }
+
+//         // Create new user in the database
+//         const newUser = await userAuthModel.create({
+//             name: userData.name,
+//             email: userData.email,
+//             password: userData.password,
+//         });
+
+//         // Clear OTP and user data from temporary store
+//         tempUserStore.delete(email);
+
+//         return res.status(201).json({ success: true, message: 'OTP verification successful. User registered.', newUser });
+
+//     } catch (error) {
+//         return res.status(500).json({ success: false, message: 'Internal server error' });
+//     }
+// };
+
+
+
+
+
+
+// OTP verification controller
+exports.verifyOTP = async (req, res) => {
+    try {
+        const { email, otp } = req.body;
+
+        // Validation
+        if (!email || !otp) {
+            return res.status(400).json({ success: false, message: 'Email and OTP are required' });
+        }
+
+        // Retrieve stored user data
+        const userData = tempUserStore.get(email);
+        if (!userData || userData.otp !== parseInt(otp)) {
+            return res.status(400).json({ success: false, message: 'Invalid OTP' });
+        }
+
+        // Create new user in the database
+        const newUser = await userAuthModel.create({
+            name: userData.name,
+            email: userData.email,
+            password: userData.password,
+            isVerified: true,
+        });
+
+        // Clear OTP and user data from temporary store
+        tempUserStore.delete(email);
+
+        return res.status(201).json({ success: true, message: 'OTP verification successful. User registered.', newUser });
+
+    } catch (error) {
+        return res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+};
