@@ -7,8 +7,6 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 
-
-
 const tempUserStore = new Map(); // Temporary in-memory store for user data
 
 // register controller
@@ -45,19 +43,29 @@ exports.register = async (req, res) => {
             },
         });
 
+    
         const mailOptions = {
             from: process.env.EMAIL,
             to: email,
-            subject: 'OTP Verification',
-            text: `Your OTP code is ${otp}. Please enter this code to verify your email address.`,
+            subject: 'OTP Verification - Ascend Incorporate LLC',
+            html: `
+                <p>Dear ${name},</p>
+                <p>Thank you for registering with <strong>Ascend Incorporate LLC</strong>.</p>
+                <p>To complete your registration and verify your email address, please use the following One-Time Password (OTP):</p>
+                <p><strong>OTP Code: ${otp}</strong></p>
+                <p>This code is valid for 10 minutes. If you did not initiate this request, please ignore this email.</p>
+                <p>Thank you for choosing <strong>Ascend Incorporate LLC</strong>.</p>
+                <p>Best regards,<br/>Ascend Incorporate LLC</p>
+            `,
         };
+        
 
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                console.error('Error sending email:', error);
+                // console.error('Error sending email:', error);
                 return res.status(500).json({ success: false, message: 'Error sending OTP email' });
             } else {
-                console.log('Email sent:', info.response);
+                // console.log('Email sent:', info.response);
             }
         });
 
@@ -112,45 +120,6 @@ exports.admin = (req, res) => {
 }
 
 // OTP verification controller
-
-// exports.verifyOTP = async (req, res) => {
-//     try {
-//         const { email, otp } = req.body;
-
-//         // Validation
-//         if (!email || !otp) {
-//             return res.status(400).json({ success: false, message: 'Email and OTP are required' });
-//         }
-
-//         // Retrieve stored user data
-//         const userData = tempUserStore.get(email);
-//         if (!userData || userData.otp !== parseInt(otp)) {
-//             return res.status(400).json({ success: false, message: 'Invalid OTP' });
-//         }
-
-//         // Create new user in the database
-//         const newUser = await userAuthModel.create({
-//             name: userData.name,
-//             email: userData.email,
-//             password: userData.password,
-//         });
-
-//         // Clear OTP and user data from temporary store
-//         tempUserStore.delete(email);
-
-//         return res.status(201).json({ success: true, message: 'OTP verification successful. User registered.', newUser });
-
-//     } catch (error) {
-//         return res.status(500).json({ success: false, message: 'Internal server error' });
-//     }
-// };
-
-
-
-
-
-
-// OTP verification controller
 exports.verifyOTP = async (req, res) => {
     try {
         const { email, otp } = req.body;
@@ -179,6 +148,98 @@ exports.verifyOTP = async (req, res) => {
 
         return res.status(201).json({ success: true, message: 'OTP verification successful. User registered.', newUser });
 
+    } catch (error) {
+        return res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+};
+
+
+
+//forget password
+
+// forgotPassword controller
+exports.forgotPassword = async (req, res) => {
+    try {
+        const { email } = req.body;
+
+        // Validation
+        if (!email) {
+            return res.status(400).json({ success: false, message: 'Email is required' });
+        }
+
+        // Check if user exists
+        const user = await userAuthModel.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User does not exist' });
+        }
+
+        // Generate OTP
+        const otp = Math.floor(100000 + Math.random() * 900000);
+
+        // Temporarily store OTP
+        tempUserStore.set(email, { otp });
+
+        // Send OTP email
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: process.env.EMAIL,
+                pass: process.env.EMAIL_PASSWORD,
+            },
+        });
+
+        const mailOptions = {
+            from: process.env.EMAIL,
+            to: email,
+            subject: 'Password Reset OTP',
+            text: `Your OTP code is ${otp}. Please enter this code to reset your password.`,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error sending email:', error);
+                return res.status(500).json({ success: false, message: 'Error sending OTP email' });
+            } else {
+                console.log('Email sent:', info.response);
+            }
+        });
+
+        return res.status(200).json({ success: true, message: 'OTP sent to email. Please verify to reset password.' });
+    } catch (error) {
+        return res.status(500).json({ success: false, message: 'Internal server error' });
+    }
+};
+
+// resetPassword controller
+exports.resetPassword = async (req, res) => {
+    try {
+        const { email, otp, newPassword } = req.body;
+
+        // Validation
+        if (!email || !otp || !newPassword) {
+            return res.status(400).json({ success: false, message: 'All fields are required' });
+        }
+
+        // Retrieve stored OTP
+        const userData = tempUserStore.get(email);
+        if (!userData || userData.otp !== parseInt(otp)) {
+            return res.status(400).json({ success: false, message: 'Invalid OTP' });
+        }
+
+        // Hash new password
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        // Update user password
+        const user = await userAuthModel.findOneAndUpdate(
+            { email },
+            { password: hashedPassword },
+            { new: true }
+        );
+
+        // Clear OTP from temporary store
+        tempUserStore.delete(email);
+
+        return res.status(200).json({ success: true, message: 'Password reset successful.', user });
     } catch (error) {
         return res.status(500).json({ success: false, message: 'Internal server error' });
     }
