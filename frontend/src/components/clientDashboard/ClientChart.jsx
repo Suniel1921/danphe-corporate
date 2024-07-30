@@ -1,44 +1,7 @@
-// import React from 'react';
-// import { Progress } from 'antd';
-// import '../adminChart/adminChart.css';
-// import Orders from '../orders/Orders';
-// import PaymentChart from '../payment/PaymentChart';
-
-// const AdminChart = () => {
-//   return (
-//     <>
-//       <div className='admin_Grid_Dashboard'>
-//         <div className='charts chartBox1'><Orders/></div>
-//         <div className='charts chartBox2'>Progress</div>
-//         <div className='charts chartBox3'><PaymentChart/></div>
-//         <div className='charts chartBox4'>box4</div>
-//         <div className='charts chartBox5'>box5</div>
-//         <div className='charts chartBox6'>box6</div>
-//         <div className='charts chartBox7'>
-//             <h3>Total Percentage of Work</h3>
-//           <Progress type="circle" percent={70} />
-//         </div>
-//         <div className='charts chartBox8'>box8</div>
-//       </div>
-//     </>
-//   )
-// }
-
-// export default AdminChart;
-
-
-
-
-
-
-
-
-
-
 import React from 'react';
 import { Layout, Progress, Typography, Table } from 'antd';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, Tooltip, CartesianGrid } from 'recharts';
-import '../adminChart/adminChart.css';
+import '../clientDashboard/clientChart.css'
 
 const { Content } = Layout;
 const { Title } = Typography;
@@ -71,7 +34,7 @@ const dataPieChart = [
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
-const AdminChart = () => {
+const ClientChart = () => {
   const columns = [
     { title: 'Documents', dataIndex: 'document', key: 'document' },
     { title: 'Status', dataIndex: 'status', key: 'status' },
@@ -86,8 +49,8 @@ const AdminChart = () => {
   return (
     <Layout>
       <Content style={{ margin: '16px' }}>
-        <div className='admin_Grid_Dashboard'>
-          <div className='charts chartBox1'>
+        <div className='client_Grid_Dashboard'>
+          <div className='client_charts box1'>
             <Title level={4}>Total Order</Title>
             <ResponsiveContainer width="100%" height={150}>
               <LineChart data={dataLineChart}>
@@ -97,7 +60,7 @@ const AdminChart = () => {
               </LineChart>
             </ResponsiveContainer>
           </div>
-          <div className='charts chartBox2'>
+          <div className='client_charts box2'>
             <Title level={4}>Progress</Title>
             <ResponsiveContainer width="100%" height={150}>
               <LineChart data={dataLineChart}>
@@ -107,7 +70,7 @@ const AdminChart = () => {
               </LineChart>
             </ResponsiveContainer>
           </div>
-          <div className='charts chartBox3'>
+          <div className='client_charts box3'>
             <Title level={4}>Payments</Title>
             <ResponsiveContainer width="100%" height={150}>
               <BarChart data={dataBarChart}>
@@ -117,7 +80,7 @@ const AdminChart = () => {
               </BarChart>
             </ResponsiveContainer>
           </div>
-          <div className='charts chartBox4'>
+          <div className='client_charts box4'>
             <Title level={4}>Total Progress of Work</Title>
             <ResponsiveContainer width="100%" height={150}>
               <PieChart>
@@ -130,19 +93,19 @@ const AdminChart = () => {
               </PieChart>
             </ResponsiveContainer>
           </div>
-          <div className='charts chartBox5'>
+          <div className='client_charts box5'>
             <Title level={4}>Documents</Title>
             <Table columns={columns} dataSource={dataTable} pagination={false} />
           </div>
-          <div className='charts chartBox6'>
+          <div className='client_charts box6'>
             <Title level={4}>Remarks</Title>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
-          <div className='charts chartBox7'>
+          <div className='client_charts box7'>
             <Title level={4}>Total Percentage of Work</Title>
             <Progress type="circle" percent={50} />
           </div>
-          <div className='charts chartBox8'>
+          <div className='client_charts box8'>
             <Title level={4}>Payments History</Title>
             <ResponsiveContainer width="100%" height={150}>
               <BarChart data={dataBarChart}>
@@ -158,7 +121,7 @@ const AdminChart = () => {
   );
 }
 
-export default AdminChart;
+export default ClientChart;
 
 
 

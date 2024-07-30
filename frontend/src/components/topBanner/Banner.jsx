@@ -108,7 +108,6 @@ const Banner = () => {
     localStorage.removeItem('token');
     axios.defaults.headers.common['Authorization'] = null;
     toast.success('Logout Successfully');
-    console.log('Navigating to /login'); // Debugging log
     navigate('/login');
   };
 

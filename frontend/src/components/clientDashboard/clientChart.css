@@ -1,5 +1,5 @@
 
-  .admin_Grid_Dashboard {
+.client_Grid_Dashboard {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
@@ -9,7 +9,7 @@
     color: var(--blackColor)
   }
   
-  .charts {
+  .client_charts {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     padding: 20px;
     border-radius: 10px;
@@ -21,20 +21,20 @@
     text-align: center;
   }
   
-  .chartBox4{
+  .box4{
       grid-row: span 2;
   }
 
-  .chartBox5{
+  .box5{
     grid-column: span 3;
     grid-row: span 2;
 
   }
   
-  .chartBox6{
+  .box6{
     grid-row: span 2;
   }
-  .chartBox8{
+  .box7{
     grid-column: span 2;
   }
 

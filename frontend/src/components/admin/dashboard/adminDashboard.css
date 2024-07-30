@@ -1,19 +1,16 @@
 .adminDashboard{
-    /* background-color: #0f1535; */
-    background-color: #181c1f;
-    /* background-color: #212529; */
+    background-color: #e6e7e9;
     display: flex;
     gap: 20px;
     color : white;
-    border-top: 2px solid var(--primaryGreenColor);
+    border-top: 2px solid var(--cherryRed);
 }
 
 .sideMenuContainer{
     width: 15%;
-    border-right: 1px solid var(--primaryGreenColor);
     padding: 20px;
-    background-color: #212529;
-
+    background-color: var(--darkBlue);
+    border-right: 2px solid var(--cherryRed);
 }
 
 .adminChartContainer{

@@ -8,6 +8,8 @@ import Login from './components/auth/login/Login';
 import Register from './components/auth/register/Register';
 import AdminRoute from './components/admin/adminProtectedRoute/AdminProtectedRoute';
 import AdminDashboard from './components/admin/dashboard/AdminDashboard';
+import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
+import ClientDashboard from './components/clientDashboard/ClientDashboard';
 
 const App = () => {
   return (
@@ -20,11 +22,17 @@ const App = () => {
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
 
+       {/* protected route */}
+       <Route element={<ProtectedRoute />}>    
+            <Route path='/client-dashboard' element={<ClientDashboard/>}/>
+        </Route>
+
+
+
          {/* admin protected route */}
          <Route path='/dashboard' element={<AdminRoute/>}>
-            <Route path='admin' element={<AdminDashboard/>}/>
-           
-            </Route>  
+            <Route path='admin' element={<AdminDashboard/>}/>           
+          </Route>  
 
       </Route>
 
