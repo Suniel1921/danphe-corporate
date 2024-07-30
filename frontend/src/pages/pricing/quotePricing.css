@@ -1,178 +1,262 @@
 
-.maincontainer{
-    display:flex;
-    width:100%;
-    padding:20px;
+.quote-main-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.quote-full-container {
+  flex: 1 1 60%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.countryList{
+  width: 50%;
+}
+
+.quote-main-header {
+  padding: 20px 0 10px;
+  font-size: 2rem;
+}
+
+.quote-header-paragraph {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.quote-search-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.quote-icon-map {
+  font-size: 2rem;
+  margin-right: 10px;
+  color: #333;
+}
+
+.quote-select {
+  font-size: 1rem;
+  height: 2.5rem;
+  width: 100%;
+  max-width: 300px;
+  border: 2px solid #757575;
+  padding: 0 10px;
+}
+
+.quote-left-side {
+  flex: 1 1 35%;
+  padding: 20px;
+  background-color: #f8f8f8;
+  margin-left: 20px;
+  box-sizing: border-box;
+}
+
+.quote-help-container {
+  border: 1px solid #ddd;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.quote-help-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.quote-help-links,
+.quote-top-states-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.quote-help-links li,
+.quote-top-states-list li {
+  margin-bottom: 10px;
+}
+
+.quote-help-links li a,
+.quote-top-states-list li a {
+  color: #d1344f;
+  text-decoration: none;
+}
+
+.quote-help-links li a:hover,
+.quote-top-states-list li a:hover {
+  text-decoration: underline;
+}
+
+.quote-top-states-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.quote-pricing-container {
+  margin: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.quote-pricing-card {
+  display: flex;
+  flex: 1 1 100%;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.quote-card-content {
+  flex: 2;
+  padding: 20px;
+}
+
+.quote-card-header {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.quote-card-paragraph {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.quote-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.quote-card-list li {
+  margin-bottom: 10px;
+}
+
+.quote-faq {
+  font-size: 1rem;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.quote-faq-icon {
+  margin-left: 5px;
+}
+
+.quote-pricing {
+  flex: 1;
+  background-color: #e6f7ff;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quote-pricing-paragraph {
+  font-size: 1rem;
+}
+
+.quote-pricing h3 {
+  font-size: 2.5rem;
+  margin: 10px 0;
+}
+
+.quote-bottom-paragraph {
+  font-size: 1rem;
+}
+
+.quote-select-button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #d1344f;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.quote-select-button:hover {
+  background-color: #c1223b;
+}
+
+@media (max-width: 1024px) {
+  .quote-full-container, .quote-left-side {
+    flex: 1 1 100%;
   }
-  .fullContainer{
-      width:70%;
-      margin: 0 auto;
-      padding:0 20px 0 20px;
-      /* border:2px solid black; */
+
+  .quote-left-side {
+    margin-left: 0;
+    margin-top: 20px;
   }
-  .mainheader{
-      padding:20px 0 10px 0;
-      font-size: 2rem;
+
+  .quote-pricing-card {
+    flex-direction: column;
   }
-  .headerpar{
-      font-size: 24px;
-      width:100%;
-      line-height:30px;
-      /* padding-top:10px; */
+
+  .quote-card-content, .quote-pricing {
+    width: 100%;
+    padding: 20px;
   }
-  .searchlogo {
-      display: flex;
-      /* gap: 30px; */
-      width: 100%;
-      padding:30px 0 30px 0;
-    }
-    
-    .iconMap {
-      font-size: 37px;
-      margin: 0 50px 0 0;
-      color: #333;
-    }
-    
-    .searchlogo select {
-      font-size: 16px;
-      height:36px;
-      width:600px;
-      border:2px solid #757575;
-      padding:20px 20px 20px 8px;
-    }
-    .searchlogo select option{
-      font-size:20px;
-    }
-    .leftside{
-      background-color:#757575;
-      width:28%;
-      align-item:center;
-      justify-content:center;
-      height:500px;
-      margin:0 50px 0 20px;
-      /* padding:0 20px 0 20px; */
-    }
-    .pricing-container{
-      margin:30px 10px 20px 0;
-    }
-    .pricing-card{
-      height:auto;
-      display:flex;
-      border:2px solid black;
-      padding: 0 0 0 20px;
-  
-    }
-    .card-content{
-      width:75%;
-      padding: 0 0 10px 0;
-    }
-    .cardheader{
-      font-size:1.85rem;
-      padding: 10px 0 10px 0;
-    }
-    .cardParagraph{
-      font-size:1.5rem;
-      padding: 0 0 20px 0;
-    }
-    .card-content ul{
-      padding:0 0 0 20px;
-      list-style-type:disc;
-    }
-    .card-content ul li{
-      font-size:1.4rem;
-      padding:0 0 10px 0;
-    }
-    .FQA{
-      text-align:right;
-      padding:0 40px 0 0;
-      font-size:1.25rem;
-      
-    }
-    .FQAIcon{
-      padding: 0 0 0 10px;
-  
-    }
-    .pricing{
-      width:25%;
-      background-color:#A0DBFB;
-      padding:30px 30px 15px 30px;
-      text-align:center;
-    }
-    .PricingParagraph{
-      font-size:1.65rem;
-    }
-    .pricing h3{
-      font-size:4.5rem;
-      padding:10px 0 10px 0;
-    }
-    .buttomParagraph{
-      font-size:1.4rem;
-  
-    }
-    .select-button{
-      margin:15px 0 2px 0;
-      padding:10px;
-      background-color:#DA5072;
-      border: 2px solid #D1344F;
-      font-weight:bold;
-      font-size:1.7rem;
-      color:white;
-      width:80%;
-      height:25%;
-      border-radius:8px;
-    }
-    @media(max-width:768px){
-      .maincontainer{
-        display:block;
-      }
-      .fullContainer{
-        width:100%;
-    }
-    .mainheader, .cardheader{
-      font-size: 1.5rem;
-    }
-    .headerpar, .cardParagraph{
-      font-size: 20px;
-    }
-    .leftside{
-      width:100%;
-    }
-    .pricing-container{
-      margin:30px 20px 20px 0;
-    }
-    .pricing-card{
-      display:block;
-      padding: 0 10% 0 10px;
-  
-    }
-    .card-content{
-      width:100%;
-    }
-    .pricing{
-      width:100%;
-      margin: 0 0 10px 0;
-    }
-    .searchlogo span{
-      width:100%;
-    }
-    .searchlogo select {
-      width:90%;
-    }
-    }
-    @media(max-width:1000px) and (min-width:768px){
-      .maincontainer{
-        display:block;
-        padding: 0 20px 0 20px;
-      }
-      .fullContainer{
-        width:100%;
-    }
-    .leftside{
-      width:100%;
-    }
-    }
-    @media(max-width:600px){
-      .pricing{
-        width:95%;
-      }
-    }
+}
+
+@media (max-width: 768px) {
+  .quote-main-header {
+    font-size: 1.5rem;
+  }
+
+  .quote-header-paragraph {
+    font-size: 0.875rem;
+  }
+
+  .quote-icon-map {
+    font-size: 1.5rem;
+  }
+
+  .quote-card-header {
+    font-size: 1.25rem;
+  }
+
+  .quote-pricing h3 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .quote-main-container {
+    padding: 10px;
+  }
+
+  .quote-full-container, .quote-left-side {
+    padding: 10px;
+  }
+
+  .quote-main-header {
+    font-size: 1.25rem;
+  }
+
+  .quote-header-paragraph {
+    font-size: 0.75rem;
+  }
+
+  .quote-icon-map {
+    font-size: 1.25rem;
+  }
+
+  .quote-select {
+    font-size: 0.875rem;
+    height: 2rem;
+  }
+
+  .quote-card-header {
+    font-size: 1rem;
+  }
+
+  .quote-pricing h3 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import '../slider/homeSlider.css';
+import {useNavigate} from 'react-router-dom'
 
 const HomeSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate(); 
+
   const slides = [
     { src: '/img/slide1.png', heading: 'Innovative Solutions for Financial Growth', content: 'Unlock innovative financial tools that fuel startup growth with dynamic strategies and transformative solutions tailored for your success.' },
     { src: '/img/slide2.png', heading: 'Empowering Startups with Financial Insights', content: 'Empower your startup with cutting-edge financial insights and dynamic solutions that drive rapid growth and operational excellence' },
@@ -36,7 +39,7 @@ const HomeSlider = () => {
                <div className="leftContent">
                <h2 className='sliderHeading'>{slide.heading}</h2>
                <p className='sliderPara'>{slide.content}</p>
-               <button className='sliderBtn btn'>Get Started</button>
+               <button className='sliderBtn btn' onClick={()=>navigate("/quote-pricing")}>Get Started</button>
                </div>
               </div>
             </div>
