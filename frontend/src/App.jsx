@@ -11,6 +11,8 @@ import AdminDashboard from './components/admin/dashboard/AdminDashboard';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import ClientDashboard from './components/clientDashboard/ClientDashboard';
 import QuotePricing from './pages/pricing/QuotePricing'
+import Package from './pages/pricing/Package';
+
 
 const App = () => {
   return (
@@ -23,6 +25,8 @@ const App = () => {
       <Route path='/login' element={<Login/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/quote-pricing' element={<QuotePricing/>}/>
+      <Route path='/package-selection/:id' element={<Package/>}/>
+
   
 
 
