@@ -89,18 +89,19 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaUserAlt } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
-import { Dropdown, Menu } from 'antd';
+import { Badge, Dropdown, Menu } from 'antd';
 import '../topBanner/banner.css';
 import { useAuthGlobally } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { useCartGlobally } from '../../contexts/cartContext';
 
 const Banner = () => {
   const [auth, setAuth] = useAuthGlobally();
   const navigate = useNavigate();
+  const { cart } = useCartGlobally();
 
   const handleLogout = () => {
-    console.log('Logout button clicked'); // Debugging log
     setAuth({
       user: null,
       token: null
@@ -161,7 +162,14 @@ const Banner = () => {
             <Dropdown overlay={messageMenu} placement="bottomRight">
               <NavLink><AiFillMessage className='icons' /></NavLink>
             </Dropdown>
-            <NavLink to={'/cart'}><FaShoppingCart className='icons' /></NavLink>
+            <Badge count={cart.length > 0 ? cart.length : 0} color="error">
+  <NavLink to={'/cart'}>
+    <FaShoppingCart className='icons' />
+  </NavLink>
+</Badge>
+
+
+            
           </div>
         </div>
       </div>

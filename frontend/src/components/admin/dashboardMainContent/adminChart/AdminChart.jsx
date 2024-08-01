@@ -36,131 +36,94 @@
 
 
 import React from 'react';
-import { Layout, Progress, Typography, Table } from 'antd';
-import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, Tooltip, CartesianGrid } from 'recharts';
 import '../adminChart/adminChart.css';
+import { Line, Bar } from 'react-chartjs-2';
+import 'chart.js/auto';
 
-const { Content } = Layout;
-const { Title } = Typography;
+const dataOrders = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+  datasets: [
+    {
+      label: 'Orders',
+      data: [65, 59, 80, 81, 56, 55, 40],
+      borderColor: '#36a2eb',
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      fill: true,
+    },
+  ],
+};
 
-const dataLineChart = [
-  { name: 'Jan', uv: 4000 },
-  { name: 'Feb', uv: 3000 },
-  { name: 'Mar', uv: 2000 },
-  { name: 'Apr', uv: 2780 },
-  { name: 'May', uv: 1890 },
-  { name: 'Jun', uv: 2390 },
-  { name: 'Jul', uv: 3490 },
-];
+const dataSales = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+  datasets: [
+    {
+      label: 'Sales',
+      data: [28, 48, 40, 19, 86, 27, 90],
+      borderColor: '#4caf50',
+      backgroundColor: 'rgba(76, 175, 80, 0.2)',
+      fill: true,
+    },
+  ],
+};
 
-const dataBarChart = [
-  { name: 'A', uv: 300 },
-  { name: 'B', uv: 200 },
-  { name: 'C', uv: 100 },
-  { name: 'D', uv: 400 },
-  { name: 'E', uv: 300 },
-  { name: 'F', uv: 200 },
-];
+const dataVisits = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+  datasets: [
+    {
+      label: 'Visits',
+      data: [85, 72, 78, 75, 77, 75, 70],
+      borderColor: '#ff6384',
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      fill: true,
+    },
+  ],
+};
 
-const dataPieChart = [
-  { name: 'Group A', value: 400 },
-  { name: 'Group B', value: 300 },
-  { name: 'Group C', value: 300 },
-  { name: 'Group D', value: 200 },
-];
-
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const dataBounceRate = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+  datasets: [
+    {
+      label: 'Bounce Rate',
+      data: [65, 59, 80, 81, 56, 55, 40],
+      borderColor: '#ff9800',
+      backgroundColor: 'rgba(255, 152, 0, 0.2)',
+      fill: true,
+    },
+  ],
+};
 
 const AdminChart = () => {
-  const columns = [
-    { title: 'Documents', dataIndex: 'document', key: 'document' },
-    { title: 'Status', dataIndex: 'status', key: 'status' },
-  ];
-
-  const dataTable = [
-    { key: '1', document: 'Lorem ipsum', status: 'Verified' },
-    { key: '2', document: 'consectetur', status: 'Needs to update' },
-    { key: '3', document: 'adipiscing elit', status: 'Needs to update' },
-  ];
-
   return (
-    <Layout>
-      <Content style={{ margin: '16px' }}>
-        <div className='admin_Grid_Dashboard'>
-          <div className='charts chartBox1'>
-            <Title level={4}>Total Order</Title>
-            <ResponsiveContainer width="100%" height={150}>
-              <LineChart data={dataLineChart}>
-                <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                <Tooltip />
-                <Line type="monotone" dataKey="uv" stroke="#ff7300" dot={false} />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-          <div className='charts chartBox2'>
-            <Title level={4}>Progress</Title>
-            <ResponsiveContainer width="100%" height={150}>
-              <LineChart data={dataLineChart}>
-                <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                <Tooltip />
-                <Line type="monotone" dataKey="uv" stroke="#82ca9d" dot={false} />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-          <div className='charts chartBox3'>
-            <Title level={4}>Payments</Title>
-            <ResponsiveContainer width="100%" height={150}>
-              <BarChart data={dataBarChart}>
-                <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                <Tooltip />
-                <Bar dataKey="uv" fill="#ff7300" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-          <div className='charts chartBox4'>
-            <Title level={4}>Total Progress of Work</Title>
-            <ResponsiveContainer width="100%" height={150}>
-              <PieChart>
-                <Pie data={dataPieChart} cx="50%" cy="50%" outerRadius={60} fill="#8884d8" label>
-                  {dataPieChart.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
-          </div>
-          <div className='charts chartBox5'>
-            <Title level={4}>Documents</Title>
-            <Table columns={columns} dataSource={dataTable} pagination={false} />
-          </div>
-          <div className='charts chartBox6'>
-            <Title level={4}>Remarks</Title>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-          <div className='charts chartBox7'>
-            <Title level={4}>Total Percentage of Work</Title>
-            <Progress type="circle" percent={50} />
-          </div>
-          <div className='charts chartBox8'>
-            <Title level={4}>Payments History</Title>
-            <ResponsiveContainer width="100%" height={150}>
-              <BarChart data={dataBarChart}>
-                <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                <Tooltip />
-                <Bar dataKey="uv" fill="#82ca9d" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      </Content>
-    </Layout>
+    <div className="admin_Grid_container">
+      <div className="charts chartBox1">
+        <h3>Congratulations Danphe 🎉</h3>
+        <p>You are the best seller of this month</p>
+        <p style={{ fontSize: '24px', fontWeight: 'bold' }}>$168.5K</p>
+        <p>58% of sales target</p>
+        <button>View Details</button>
+      </div>
+      <div className="charts chartBox2">
+        <h3>Total Orders</h3>
+        <Line data={dataOrders} />
+        <p>248k</p>
+      </div>
+      <div className="charts chartBox3">
+        <h3>Total Sales</h3>
+        <Line data={dataSales} />
+        <p>$47.6k</p>
+      </div>
+      <div className="charts chartBox4">
+        <h3>Total Visits</h3>
+        <Line data={dataVisits} />
+        <p>189k</p>
+      </div>
+      <div className="charts chartBox5">
+        <h3>Bounce Rate</h3>
+        <Bar data={dataBounceRate} />
+        <p>24.6%</p>
+      </div>
+    </div>
   );
-}
+};
 
 export default AdminChart;
-
-
-
-
-

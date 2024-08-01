@@ -1,15 +1,8 @@
-
-
-.form input{
-    color: blue;
-}
-
+/* 
   
   .formContainer {
-    background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
   }
   
   .form input {
@@ -18,12 +11,12 @@
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: transparent;
   }
   
   .form button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -45,18 +38,14 @@
     align-items: center;
     padding: 5px 10px;
     margin: 5px 0;
-    /* background-color: #fff; */
     border: 1px solid #ccc;
     border-radius: 4px;
   }
   
-  .listItem span {
-    flex: 1;
-  }
+ 
   
   .listItem button {
-    background-color: #dc3545;
-    color: #fff;
+
     border: none;
     padding: 5px 10px;
     border-radius: 4px;
@@ -79,9 +68,67 @@
   .inputWithButton button {
     padding: 10px 20px;
     background-color: #28a745;
-    color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
   }
   
+  */
+
+
+
+  .packageForm{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 444px; /* remove this line later just for testing purpose */
+    margin-top: 23px;
+  }
+
+  .packageForm input{
+    background-color: transparent;
+    /* padding: 7px 45px; */
+    width: 60%;
+    padding: 8px;
+    outline: none;
+    border: 1px solid var(--whiteColor);
+    border-radius: 4px;
+  }
+
+
+  .packageBtn{
+    padding: 4px 12px;
+    background-color: var(--darkBlue);
+    margin: 13px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .listDeleteBtn{
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--cherryRed);
+    padding: 4px 12px;
+    margin: 8px;
+
+  }
+
+
+
+  .packageSubmitBtn{
+    padding: 10px 50px;
+    width: 70%;
+    background-color: var(--darkBlue);
+    margin: 13px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .packageSubmitBtn:hover{
+    background-color: var(--mixBlue);
+  }
+

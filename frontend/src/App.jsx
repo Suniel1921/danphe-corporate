@@ -13,6 +13,7 @@ import ClientDashboard from './components/clientDashboard/ClientDashboard';
 import QuotePricing from './pages/pricing/QuotePricing'
 import Package from './pages/pricing/Package';
 import CreatePackage from './components/admin/dashboardMainContent/packages/CreatePackage';
+import Cart from './pages/cart/Cart';
 
 
 const App = () => {
@@ -27,6 +28,10 @@ const App = () => {
       <Route path='/register' element={<Register/>}/>
       <Route path='/quote-pricing' element={<QuotePricing/>}/>
       <Route path='/package-selection/:id' element={<Package/>}/>
+
+
+
+      <Route path='/cart' element={<Cart/>}/>
 
 
   
