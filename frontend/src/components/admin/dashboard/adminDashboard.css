@@ -7,14 +7,14 @@
 }
 
 .sideMenuContainer{
-    width: 15%;
+    width: 17%;
     padding: 20px;
     background-color: var(--darkBlue);
     border-right: 2px solid var(--cherryRed);
 }
 
 .adminChartContainer{
-    width: 85%;
+    width: 83%;
     margin-right: 23px;
     margin-top: 50px;
     height: 100vh;

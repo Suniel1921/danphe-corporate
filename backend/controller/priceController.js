@@ -1,5 +1,21 @@
 const priceModel = require('../models/priceModel');
 
+// exports.createPrice = async (req, res) => {
+//   try {
+//     const { heading, para, contentList, cartHeading, cartPrice, cartList0, cartList1, cartList2 } = req.body;
+//     if (!heading || !para || !contentList || !cartHeading || !cartPrice || !cartList0 || !cartList1 || !cartList2) {
+//       return res.status(400).send({ success: false, message: 'All fields are required' });
+//     }
+//     // Create / save data in database
+//     const newPriceData = await priceModel.create({ heading, para, contentList, cartHeading, cartPrice, cartList0, cartList1, cartList2 });
+//     return res.status(201).json({ success: true, message: 'Price Data created successfully', newPriceData });
+//   } catch (error) {
+//     return res.status(500).json({ success: false, message: `${`internal server error ${error}`}` });
+//   }
+// };
+
+
+
 exports.createPrice = async (req, res) => {
   try {
     const { heading, para, contentList, cartHeading, cartPrice, cartList0, cartList1, cartList2 } = req.body;
@@ -13,6 +29,9 @@ exports.createPrice = async (req, res) => {
     return res.status(500).json({ success: false, message: 'Internal server error' });
   }
 };
+
+
+
 
 //get all price
 

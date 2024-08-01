@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom';
 const SideMenu = () => {
   const [dropdowns, setDropdowns] = useState({
     ecommerce: false,
-    category: false,
+    package: false,
   });
 
   const toggleDropdown = (name) => {
     setDropdowns((prevState) => {
-      const newState = { ecommerce: false, category: false };
+      const newState = { ecommerce: false, package: false };
       newState[name] = !prevState[name];
       return newState;
     });
@@ -29,10 +29,10 @@ const SideMenu = () => {
 
 
         <div className="dropdownContainer">
-          <h3 onClick={() => toggleDropdown('ecommerce')}>
+          <h4 onClick={() => toggleDropdown('ecommerce')}>
             <IoMdArrowDropright className={`icon ${dropdowns.ecommerce ? 'rotate' : ''}`} />
             <span className="dropdownTitle">testing heading</span>
-          </h3>
+          </h4>
           <div className={`dropdownContent ${dropdowns.ecommerce ? 'open' : ''}`}>
             <Link className='link' to={'/dashboard/admin/createProduct'}> 
             <p><IoMdArrowDropright className="subItemIcon" /> Add Product</p>
@@ -46,23 +46,18 @@ const SideMenu = () => {
         </div>
 
         <div className="dropdownContainer">
-          <h3 onClick={() => toggleDropdown('category')}>
-            <IoMdArrowDropright className={`icon ${dropdowns.category ? 'rotate' : ''}`} />
-            <span className="dropdownTitle">testing 2</span>
-          </h3>
+          <h4 onClick={() => toggleDropdown('category')}>
+            <IoMdArrowDropright className={`icon ${dropdowns.package ? 'rotate' : ''}`} />
+            <span className="dropdownTitle">Manage Package</span>
+          </h4>
           <div className={`dropdownContent ${dropdowns.category ? 'open' : ''}`}>
-            <Link className='link' to='/dashboard/admin/createCategory'>
+            <Link className='link' to='/dashboard/admin/createPackage'>
               <p className="subItemLink">
-                <IoMdArrowDropright className="subItemIcon" /> Add Category
+                <IoMdArrowDropright className="subItemIcon" /> Add Package
               </p>
             </Link>
-            <Link className='link' to='/dashboard/admin/createBrand'>
-              <p className="subItemLink">
-                <IoMdArrowDropright className="subItemIcon" /> Add Brand
-              </p>
-            </Link>
+           
 
-            <p><IoMdArrowDropright className="subItemIcon" />Category List</p>
 
 
           </div>

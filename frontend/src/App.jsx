@@ -12,6 +12,7 @@ import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
 import ClientDashboard from './components/clientDashboard/ClientDashboard';
 import QuotePricing from './pages/pricing/QuotePricing'
 import Package from './pages/pricing/Package';
+import CreatePackage from './components/admin/dashboardMainContent/packages/CreatePackage';
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
       <Route path='/quote-pricing' element={<QuotePricing/>}/>
       <Route path='/package-selection/:id' element={<Package/>}/>
 
+
   
 
 
@@ -40,6 +42,7 @@ const App = () => {
          {/* admin protected route */}
          <Route path='/dashboard' element={<AdminRoute/>}>
             <Route path='admin' element={<AdminDashboard/>}/>           
+            <Route path='admin/createPackage' element={<CreatePackage/>}/>
           </Route>  
 
       </Route>
