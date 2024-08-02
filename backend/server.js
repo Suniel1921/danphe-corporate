@@ -5,6 +5,7 @@ const cors = require('cors');
 const connectDB = require('./config/dbConn');
 const authRoute = require('./routes/authRoute');
 const priceRoute = require('./routes/priceRoute');
+const contactRoute = require ('./routes/contactRoute');
 
 const port = process.env.PORT || 5000;
 const app = express();
@@ -19,6 +20,7 @@ connectDB();
 // Routes
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/price', priceRoute);
+app.use('/api/v1/contact', contactRoute);
 
 app.get('/', (req, res) => {
   res.send('Welcome to Nepal Tech');

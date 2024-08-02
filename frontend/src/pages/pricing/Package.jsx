@@ -96,7 +96,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useCartGlobally } from "../../contexts/cartContext";
 import "./package.css";
 
@@ -106,6 +106,7 @@ const Package = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { addToCart } = useCartGlobally();
+  const navigate = useNavigate();
 
   const getsinglePrice = async () => {
     setLoading(true);
@@ -156,6 +157,7 @@ const Package = () => {
     };
     addToCart(product);
     toast.success('Item added to cart');
+    navigate('/cart')
   };
 
   const renderPackageCard = (index) => {

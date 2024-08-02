@@ -16,7 +16,7 @@ const Cart = () => {
         if (!auth.user) {
             navigate('/login');
         } else {
-            navigate('/checkout');
+            navigate('/contact-info');
         }
     };
 
