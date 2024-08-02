@@ -51,3 +51,18 @@ exports.contact = async (req, res) => {
       .json({ success: false, message: `${error}` });
   }
 };
+
+
+
+
+//company information form submission handler
+const UserCompanyInfo = require('../models/companyInfoModel');
+exports.createUserCompanyInfo = async (req, res) => {
+  try {
+    const newInfo = new UserCompanyInfo(req.body);
+    await newInfo.save();
+    res.status(201).json({ success: true, message: 'Form submitted successfully', data: newInfo });
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Failed to submit form', error });
+  }
+};

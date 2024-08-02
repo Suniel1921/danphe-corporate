@@ -3,15 +3,23 @@
     font-size: 12px;
     margin-top: 5px;
   }
+  .flexContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 2rem;
+  }
+  
+  
+  
   
   .userContactInfoContainer {
     padding: 20px;
   }
   
+  
 
   .contactForm {
-    /* display: flex;
-    flex-direction: column; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
@@ -43,3 +51,8 @@
     height: 44px;
   }
   
+
+
+
+
+
