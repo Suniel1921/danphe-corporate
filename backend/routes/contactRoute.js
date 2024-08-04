@@ -1,9 +1,11 @@
 const express = require ('express');
 const routes = express.Router();
 const controller = require ('../controller/contactController');
+const { requireLogin } = require('../middleware/authMiddleware');
 
 routes.post('/contacts', controller.contact);
-routes.post('/userCompanyInfo', controller.createUserCompanyInfo);
+routes.post('/userCompanyInfo', requireLogin, controller.createUserCompanyInfo);
+routes.get('/getAllCompanyInfo', controller.getAllCompanyInfo);
 
 
 module.exports = routes;

@@ -1,4 +1,6 @@
 const contactModel = require("../models/contactModel");
+const companyInfoModel = require('../models/companyInfoModel');
+
 
 exports.contact = async (req, res) => {
   try {
@@ -55,14 +57,42 @@ exports.contact = async (req, res) => {
 
 
 
-//company information form submission handler
-const UserCompanyInfo = require('../models/companyInfoModel');
+
+//create user company information 
+
 exports.createUserCompanyInfo = async (req, res) => {
   try {
-    const newInfo = new UserCompanyInfo(req.body);
+    const userId = req.user._id; // Ensure `req.user` is not undefined
+
+    if (!userId) {
+      return res.status(400).json({ success: false, message: 'User ID is missing' });
+    }
+
+    const newInfo = new companyInfoModel({
+      ...req.body,
+      user: userId,
+    });
+
     await newInfo.save();
     res.status(201).json({ success: true, message: 'Form submitted successfully', data: newInfo });
   } catch (error) {
     res.status(500).json({ success: false, message: 'Failed to submit form', error });
   }
 };
+
+
+
+//get user company information
+exports.getAllCompanyInfo = async (req, res) => {
+  try {
+    const companyInfo = await companyInfoModel.find().populate({path: 'user', select: '-password'});
+    if (companyInfo.length === 0) {
+      return res.status(404).json({ success: false, message: 'No company info found' });
+    }
+    res.status(200).json({ success: true, message: 'Company information retrieved successfully', data: companyInfo });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
+  }
+};
+
+

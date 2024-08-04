@@ -45,6 +45,11 @@ const userCompanyInfoSchema = new mongoose.Schema({
   incorporator: contactSchema,
   businessEmail: { type: String, required: true },
   businessPhone: { type: String, required: true },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'UserAuth',
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('UserCompanyInfo', userCompanyInfoSchema);
