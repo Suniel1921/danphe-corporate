@@ -109,7 +109,8 @@ const Banner = () => {
     localStorage.removeItem('token');
     axios.defaults.headers.common['Authorization'] = null;
     toast.success('Logout Successfully');
-    navigate('/login');
+    // navigate('/login');
+    window.location.href = '/login';
   };
 
   const userMenu = (

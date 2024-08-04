@@ -39,7 +39,7 @@ const ClientSideMenu = () => {
             <span className="dropdownTitle">Dashboard</span>
           </h3>
           <div className={`dropdownContent ${dropdowns.ecommerce ? 'open' : ''}`}>
-            <Link className='link' to={'/dashboard/admin/createProduct'}> 
+            <Link className='link' to={'/edit-info'}> 
             <p><IoMdArrowDropright className="subItemIcon" />Edit Information</p>
             </Link>
            

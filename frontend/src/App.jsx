@@ -91,6 +91,7 @@ import UserContactInfo from './pages/contact/UserContactInfo';
 import UserCompanyInfo from './pages/contact/UserCompanyInfo';
 import Contact from './pages/contact/Contact';
 import Checkout from './pages/cart/Checkout';
+import EditInfo from './components/clientDashboard/clientInfo/EditInfo';
 
 const App = () => {
   return (
@@ -114,6 +115,7 @@ const App = () => {
             {/* Protected route */}
             <Route element={<ProtectedRoute />}>
               <Route path='/client-dashboard' element={<ClientDashboard />} />
+              <Route path='/edit-info' element={<EditInfo/>} />
             </Route>
 
             {/* Admin protected route */}

@@ -83,16 +83,35 @@ exports.createUserCompanyInfo = async (req, res) => {
 
 
 //get user company information
+// exports.getAllCompanyInfo = async (req, res) => {
+//   try {
+//     const companyInfo = await companyInfoModel.find().populate({path: 'user', select: '-password'});
+//     if (companyInfo.length === 0) {
+//       return res.status(404).json({ success: false, message: 'No company info found' });
+//     }
+//     res.status(200).json({ success: true, message: 'Company information retrieved successfully', companyInfo });
+//   } catch (error) {
+//     return res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
+//   }
+// };
+
+
+
+
+
+// controller/contactController.js
+
 exports.getAllCompanyInfo = async (req, res) => {
   try {
-    const companyInfo = await companyInfoModel.find().populate({path: 'user', select: '-password'});
-    if (companyInfo.length === 0) {
-      return res.status(404).json({ success: false, message: 'No company info found' });
-    }
-    res.status(200).json({ success: true, message: 'Company information retrieved successfully', data: companyInfo });
+    const userId = req.user._id; 
+    
+    // Find company info only for the logged-in user
+    const companyInfo = await companyInfoModel.find({ user: userId }).populate({path: 'user', select: '-password'});
+    res.status(200).json({ success: true, message: 'Company information retrieved successfully', companyInfo });
   } catch (error) {
     return res.status(500).json({ success: false, message: 'Internal server error', error: error.message });
   }
 };
+
 
 

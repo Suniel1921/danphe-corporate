@@ -5,7 +5,7 @@ const { requireLogin } = require('../middleware/authMiddleware');
 
 routes.post('/contacts', controller.contact);
 routes.post('/userCompanyInfo', requireLogin, controller.createUserCompanyInfo);
-routes.get('/getAllCompanyInfo', controller.getAllCompanyInfo);
+routes.get('/getAllCompanyInfo', requireLogin, controller.getAllCompanyInfo);
 
 
 module.exports = routes;
