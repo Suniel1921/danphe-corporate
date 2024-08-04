@@ -35,13 +35,13 @@ const SideMenu = () => {
           </h4>
           <div className={`dropdownContent ${dropdowns.ecommerce ? 'open' : ''}`}>
             <Link className='link' to={'/dashboard/admin/createProduct'}> 
-            <p><IoMdArrowDropright className="subItemIcon" /> Add Product</p>
+            <p><IoMdArrowDropright className="subItemIcon" /> test1</p>
             </Link>
            
-            <p><IoMdArrowDropright className="subItemIcon" /> Products</p>
-            <p><IoMdArrowDropright className="subItemIcon" /> Customers</p>
-            <p><IoMdArrowDropright className="subItemIcon" /> Orders</p>
-            <p><IoMdArrowDropright className="subItemIcon" /> Order Details</p>
+            <p><IoMdArrowDropright className="subItemIcon" /> test2</p>
+            <p><IoMdArrowDropright className="subItemIcon" /> test3</p>
+            <p><IoMdArrowDropright className="subItemIcon" /> test4</p>
+            <p><IoMdArrowDropright className="subItemIcon" /> test5</p>
           </div>
         </div>
 

@@ -44,7 +44,7 @@ const Layout = () => {
     /^\/cart$/,
     /^\/contact-info$/,
     /^\/company-info$/,
-    /^\/review-checkout$/
+    /^\/checkout$/
   ].some(pattern => pattern.test(location.pathname));
 
   return (

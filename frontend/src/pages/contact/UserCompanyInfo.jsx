@@ -415,6 +415,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 // Reusable FormInput Component
 const FormInput = ({ label, type = "text", ...props }) => (
@@ -425,6 +426,7 @@ const FormInput = ({ label, type = "text", ...props }) => (
 );
 
 const UserCompanyInfo = () => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       preferredName: '',
@@ -452,8 +454,8 @@ const UserCompanyInfo = () => {
       try {
         const response = await axios.post(`${import.meta.env.VITE_REACT_APP_URL}/api/v1/contact/userCompanyInfo`, values);
         if(response.data.success){
-          // toast.success('Form submitted successfully');
           toast.success(response.data.message);
+          navigate('/checkout');         
 
         }
       } catch (error) {

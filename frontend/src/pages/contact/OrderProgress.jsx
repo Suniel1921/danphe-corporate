@@ -96,7 +96,7 @@ const steps = [
   { path: '/cart', label: 'Cart' },
   { path: '/contact-info', label: 'Contact Info' },
   { path: '/company-info', label: 'Company Info' },
-  { path: '/review-checkout', label: 'Review & Checkout' },
+  { path: '/checkout', label: 'Review & Checkout' },
 ];
 
 const OrderProgress = () => {

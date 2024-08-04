@@ -89,6 +89,8 @@ import CreatePackage from './components/admin/dashboardMainContent/packages/Crea
 import Cart from './pages/cart/Cart';
 import UserContactInfo from './pages/contact/UserContactInfo';
 import UserCompanyInfo from './pages/contact/UserCompanyInfo';
+import Contact from './pages/contact/Contact';
+import Checkout from './pages/cart/Checkout';
 
 const App = () => {
   return (
@@ -103,8 +105,11 @@ const App = () => {
             <Route path='/quote-pricing' element={<QuotePricing />} />
             <Route path='/package-selection/:id' element={<Package />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/new-order' element={<Contact/>} />
+            <Route path='/existing-order' element={<Contact/>} />
             <Route path='/contact-info' element={<UserContactInfo />} />
             <Route path='/company-info' element={<UserCompanyInfo />} />
+            <Route path='/checkout' element={<Checkout />} />
 
             {/* Protected route */}
             <Route element={<ProtectedRoute />}>
