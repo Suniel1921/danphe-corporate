@@ -47,7 +47,7 @@ const ManageOrders = () => {
       <div className="adminDashboard">
         <div className="sideMenuContainer"><SideMenu/></div>
         <div className="container">
-          <h3>Manage Orders Page</h3>
+          <h3 className='manageOrderHeading'>Manage Your Customer Order</h3>
           <div className="ordersTable">
             <div className="tableHeader">
               <div>User</div>
