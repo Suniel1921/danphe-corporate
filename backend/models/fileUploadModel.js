@@ -6,6 +6,7 @@ const fileUploadSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Name is required'],
     },
+    
     images: [{
         type: String
     }]
