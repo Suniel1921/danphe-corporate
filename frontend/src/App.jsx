@@ -92,6 +92,7 @@ import UserCompanyInfo from './pages/contact/UserCompanyInfo';
 import Contact from './pages/contact/Contact';
 import Checkout from './pages/cart/Checkout';
 import EditInfo from './components/clientDashboard/clientInfo/EditInfo';
+import ManageOrders from './components/admin/dashboardMainContent/manageOrders/ManageOrders';
 
 const App = () => {
   return (
@@ -122,6 +123,7 @@ const App = () => {
             <Route path='/dashboard' element={<AdminRoute />}>
               <Route path='admin' element={<AdminDashboard />} />
               <Route path='admin/createPackage' element={<CreatePackage />} />
+              <Route path='admin/manage-orders' element={<ManageOrders />} />
             </Route>
           </Route>
         </Routes>
